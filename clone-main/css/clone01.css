@@ -1,0 +1,230 @@
+* {margin:0;padding:0;box-sizing: border-box;}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap');
+
+
+ul {list-style: none;}
+a {color:inherit;text-decoration:none;}
+img {vertical-align: middle;max-width:100%;}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #444;
+    line-height: 1;
+}
+
+.Wrap {
+    min-width: 1900px;
+    overflow: hidden;
+}
+
+.headerWrap {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    min-width:1900px;
+    z-index:999;
+}
+
+/*position:absolute와 z-index가 중요, min-width는 왜?*/
+
+
+.topBanner {
+    background:#444;
+    color:#fff;
+    font-size:15px;
+    padding:5px 15px;
+}
+
+.topBanner .inner {
+    display:flex;
+    justify-content: space-between;
+    width:1200px;
+    margin:0 auto;
+}
+
+.topBanner ul  {
+    display:flex;
+}
+
+.topBanner .left li {
+    margin-right:30px;
+}
+
+.topBanner .right {
+    gap:30px;
+}
+
+/*Q1. 왜 left는 li로 줘야하고, right는 li 없이 해서 간격을 줘야하는지? gap/margin차이? */
+
+.topBanner .right li {
+    position:relative;
+}
+/* Q2. 왜 POSITION:RELATIVE 를 줘야지 막대기가 나타날까? */
+
+.topBanner .right li~li::before {
+    content:"";
+    display:block;
+    position: absolute;
+    width:1px;
+    height:12px;
+    background: #ddd;
+    top : 50%;
+    left:-15px;
+    transform: translateY(-50%);
+} 
+
+/* treanslateX는 가로축으로, Y는 세로축이며 -를 주면 올라가고 +를 주면 내려간다.*/
+
+h1 {
+    padding:20px 0;
+    text-align: center;
+}
+
+h1 img {
+    width:250px;
+}
+
+.gnb {
+    border-top:1px solid #707070;
+    border-bottom:1px solid #707070;
+}
+/*Q3. border-top/border-bottom 따로 안쓰고 border로 하면 안되는지?
+=> 해결 O : 양 옆에 선이 안보이게 하려면 따로 줘야함!*/
+
+.gnb ul {
+    display:flex;
+    justify-content: center;
+    gap:40px;
+    color:#fff;
+    width:1200px;
+    margin:auto;
+    line-height:50px;
+}
+
+/*Q4.MARGIN과 GAP의 차이점*/
+
+.mainVisual {
+    position:relative;
+    height:100vh;
+    background: url(../img/main_slider_n01\ copy.jpg) no-repeat center center/cover;
+}
+/* no-repeat : 그림반복x, cover는 중앙비율 contain은 원본비율로!*/
+/* Q5.relative와 absolute 차이점 헷갈려!*/
+
+.mainVisual .slogan {
+    position:absolute;
+    inset:50% auto auto 50%;
+    transform:translate(-50%,-50%);
+    width:1200px;
+    padding:0 15px;
+    color:#fff;
+}
+
+/*Q6.INSET?, width:1200px하면 오른쪽으로 이동 why?*/
+/*translate-50%,-50% =>center, translate/text-align/flex->justify center 3가지 구분*/
+
+.mainVisual .slogan h2 {
+    font-size: 17px; /*Noto Sans 홀수로*/
+    font-weight: 100;
+    letter-spacing: 1em;
+    margin-bottom: 30px;
+}
+
+.mainVisual .slogan p {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.618;
+    letter-spacing: -0.025em;
+}
+
+.mainContent {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.mainContent h2 {
+    font-size: 17px;
+    font-weight: 100;
+    letter-spacing: 1em;
+    margin-bottom: 30px;
+}
+
+.mainContent h2::after {
+    content: "";
+    display:block;
+    width:100px;
+    height:2px;
+    background: #369;
+    margin:30px auto; /*아래위 , 좌우 */
+}
+
+.mainContent p {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.618;
+    letter-spacing: -0.025em;
+    margin-bottom: 30px;
+}
+
+.mainContent .container {
+    display:flex;
+    width:1200px;
+    margin:0 auto;
+    
+}
+
+.mainContent .container figure {
+    flex:1;
+    padding:0 15px;
+}
+
+.mainContent .container .inner {
+    margin-bottom:20px;
+    overflow:hidden;
+}
+
+.mainContent .container .inner img {
+    transition:0.5s;
+}
+
+.mainContent .container .inner:hover img {
+    transform: scale(1.2);
+}
+
+.footerWrap {
+    padding:50px 0;
+    background: #444;
+    color:#fff;
+    text-align: center;
+    letter-spacing: -0.025em;
+    font-size: 13px;
+    font-weight: 300;
+    line-height:1.4;
+}
+
+.footerWrap .sns {
+    padding:20px 0;
+}
+
+.footerWrap .sns i {
+    padding:10px;
+    background: #333;
+    font-size: 17px;
+}
+
+.toTop {
+    position:fixed;
+    bottom:50px;
+    right:50px;
+}
+
+.toTop i {
+    padding:10px;
+    background: #ddd;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor:pointer;
+}
